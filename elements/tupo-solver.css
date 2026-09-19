@@ -1,0 +1,76 @@
+tupo-solver {
+  display: block;
+  inline-size: 100%;
+  container-type: inline-size;
+
+  --size: attr(size number);
+
+  &::part(root) {
+    display: grid;
+    inline-size: 70cqmin;
+    grid-template-rows: max-content auto;
+    grid-template-columns: 100%;
+    gap: 0.125rem;
+    margin: 0.5rem auto;
+  }
+
+  &::part(board) {
+    display: grid;
+    grid-template-columns: repeat(var(--size), auto);
+    aspect-ratio: 1;
+    gap: 0.25rem;
+    inline-size: 100%;
+  }
+
+  &::part(input) {
+    display: block;
+    aspect-ratio: 1;
+    inline-size: calc((70cqmin / var(--size)) - 0.25rem);
+    font-size: 2rem;
+    border: 1px solid oklch(from slategray 80% c h);
+    border-radius: 0.25rem;
+    text-align: center;
+    caret-color: oklab(0% 0 0 / 0);
+  }
+
+  &::part(selected) {
+    outline: 2px solid oklch(from ActiveBorder 70% c h);
+  }
+
+  &::part(controls) {
+    display: flex;
+    flex-wrap: wrap;
+    inline-size: 100%;
+    gap: 0.25rem;
+    place-content: center;
+    margin: 0.5rem auto;
+  }
+
+  &::part(divider) {
+    flex-basis: 100%;
+  }
+
+  &::part(button) {
+    display: block;
+    flex-basis: 15%;
+    aspect-ratio: 1;
+    font-size: 0.875rem;
+    background: oklch(from var(--color) 90% 0.25 h);
+    border: 1px solid oklch(from slategray 80% c h);
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+
+  &::part(color-label) {
+    border: 0;
+    clip: rect(0,0,0,0);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,27 @@
+@import "../elements/tupo-solver.css";
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  max-inline-size: 100%;
+  padding: 0;
+  border: none;
+  font: inherit;
+  -webkit-text-size-adjust: none;
+}
+
+html {
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo,
+    Consolas, 'DejaVu Sans Mono', monospace;
+  font-weight: normal;
+  block-size: 100%;
+}
+
+body {
+  block-size: auto;
+  min-block-size: 100%;
+  display: grid;
+  place-items: center;
+}
