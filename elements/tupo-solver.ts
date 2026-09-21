@@ -92,7 +92,7 @@ export class TupoSolver extends HandcraftElement {
           ),
           div.part("board")(
             range(this.size ** 2).map((id) =>
-              button
+              button(() => `${this.state.rules[id].number ?? ""}`)
                 .part("input", {
                   selected: () => this.state.focused === id,
                 })
@@ -110,7 +110,7 @@ export class TupoSolver extends HandcraftElement {
                   () => {
                     if (!this.state.solved) this.state.focused = id;
                   },
-                )(() => `${this.state.rules[id].number ?? ""}`)
+                )
             ),
           ),
           div.part("controls")(

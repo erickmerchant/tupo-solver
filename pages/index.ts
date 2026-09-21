@@ -1,15 +1,7 @@
 import { h } from "@handcraft/lib";
 import tupoSolver from "../elements/tupo-solver.ts";
 
-const {
-  body,
-  head,
-  link,
-  meta,
-  title,
-  html,
-  script,
-} = h.html;
+const { body, head, link, meta, title, html, script } = h.html;
 
 export default function ({ params }: { params: { size: string } }) {
   return html.lang("en-US")(
