@@ -5,10 +5,11 @@ import { view } from "@handcraft/lib/ssr";
 import index from "./pages/index.ts";
 
 const app = flint()
-  .file(p`/*.woff2`)
+  .route(p`/:size([3-5])/`, view(index), ["/3/", "/4/", "/5/"])
+  .route("/workers/solver.js", js)
   .file("/elements/tupo-solver.js", js)
-  .file("/styles/index.css", css)
-  .route(p`/:size([1-5])/`, view(index), ["/4/", "/5/"]);
+  .file(p`/*.woff2`)
+  .file("/styles/index.css", css);
 
 export default app;
 

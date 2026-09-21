@@ -3,6 +3,11 @@ tupo-solver {
   inline-size: 100%;
   container-type: inline-size;
 
+  --red: crimson;
+  --yellow: gold;
+  --green: forestgreen;
+  --blue: skyblue;
+  --purple: rebeccapurple;
   --size: attr(size number);
 
   &::part(root) {
@@ -12,6 +17,11 @@ tupo-solver {
     grid-template-columns: 100%;
     gap: 0.125rem;
     margin: 0.5rem auto;
+  }
+
+  &::part(message) {
+    font-style: italic;
+    margin: 1rem 0.5rem;
   }
 
   &::part(board) {
@@ -31,6 +41,7 @@ tupo-solver {
     border-radius: 0.25rem;
     text-align: center;
     caret-color: oklab(0% 0 0 / 0);
+    background: oklch(from var(--color) 90% 0.25 h);
   }
 
   &::part(selected) {
@@ -59,18 +70,5 @@ tupo-solver {
     border: 1px solid oklch(from slategray 80% c h);
     border-radius: 0.25rem;
     cursor: pointer;
-  }
-
-  &::part(color-label) {
-    border: 0;
-    clip: rect(0,0,0,0);
-    clip-path: inset(50%);
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
   }
 }

@@ -19,6 +19,7 @@
       "deno.unstable",
       "dom",
       "dom.iterable",
+      "deno.worker",
       "es2025"
     ]
   },
