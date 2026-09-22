@@ -23,11 +23,13 @@ export class TupoSolver extends HandcraftElement {
   state: {
     focused: number | null;
     rules: Array<Rule>;
+    board: Array<Cell>;
     count: number;
     solved: boolean;
   } = watch({
     focused: null,
     rules: [],
+    board: [],
     count: 0,
     solved: false,
   });
@@ -67,7 +69,7 @@ export class TupoSolver extends HandcraftElement {
           this.state.count = count;
 
           if (board) {
-            this.state.rules = board;
+            this.state.board = board;
 
             this.state.solved = true;
 
@@ -92,17 +94,26 @@ export class TupoSolver extends HandcraftElement {
           ),
           div.part("board")(
             range(this.size ** 2).map((id) =>
-              button(() => `${this.state.rules[id].number ?? ""}`)
+              button(() =>
+                `${
+                  this.state.rules[id].number ?? this.state.board[id]?.number ??
+                    ""
+                }`
+              )
                 .part("input", {
                   selected: () => this.state.focused === id,
+                  solved: () =>
+                    this.state.rules[id].color == null &&
+                    this.state.rules[id].number == null &&
+                    this.state.board[id] != null,
                 })
                 .style({
                   "--color": () => {
                     const rules = this.state.rules;
+                    const board = this.state.board;
+                    const color = rules[id].color ?? board[id]?.color;
 
-                    return rules[id].color != null
-                      ? `var(--${rules[id].color})`
-                      : "";
+                    return color != null ? `var(--${color})` : "";
                   },
                 })
                 .on(

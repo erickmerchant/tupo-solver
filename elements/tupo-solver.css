@@ -48,6 +48,10 @@ tupo-solver {
     outline: 2px solid oklch(from ActiveBorder 70% c h);
   }
 
+  &::part(solved) {
+    opacity: 0.5;
+  }
+
   &::part(controls) {
     display: flex;
     flex-wrap: wrap;
