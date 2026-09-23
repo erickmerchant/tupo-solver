@@ -2,7 +2,7 @@
   "version": "5",
   "specifiers": {
     "jsr:@cfa/gitignore-parser@~0.1.4": "0.1.4",
-    "jsr:@erickmerchant/fonts@~0.7.5": "0.7.5",
+    "jsr:@erickmerchant/fonts@~0.7.6": "0.7.6",
     "jsr:@flint/framework@~0.40.1": "0.40.1",
     "jsr:@handcraft/lib@^4.7.1": "4.7.1",
     "jsr:@std/async@^1.5.0": "1.5.0",
@@ -20,14 +20,14 @@
     "npm:@remix-run/mime@~0.4.2": "0.4.2",
     "npm:html-rewriter-wasm@~0.4.1": "0.4.1",
     "npm:lightningcss@^1.33.0": "1.33.0",
-    "npm:unifont@~0.8.3": "0.8.3"
+    "npm:unifont@^1.0.1": "1.0.1"
   },
   "jsr": {
     "@cfa/gitignore-parser@0.1.4": {
       "integrity": "60d3563bbd7b8797f50c28585d7d74d231fbb56a1d9df7b0673c27cbdf60a23a"
     },
-    "@erickmerchant/fonts@0.7.5": {
-      "integrity": "4a2429b0bd37182bdf691fbb92f367d54f371b1a5724532da2f58e42d4dfdeee",
+    "@erickmerchant/fonts@0.7.6": {
+      "integrity": "60755e69a3d627971c827d29e81cf5851c35634a9dd82ee363a9b1097edb8cfe",
       "dependencies": [
         "jsr:@std/cli",
         "jsr:@std/fs",
@@ -206,11 +206,11 @@
     "std-env@4.2.0": {
       "integrity": "sha512-oCUKSupKTHX53EyjDtuZQ64pjLJ6yYCtpmEw0goYxtjG9KpbRe8KAsl2tBUGU9DyMcJ0RwJ8GqJAFzMXcXW1Rw=="
     },
-    "undici@8.10.2": {
-      "integrity": "sha512-/y4/bH9YNU5hi9NIrpOuvGXFcxrj3CMrV+/AYpowAYTpHn8gX/XPFjNy766FPoYY0miQhdW977JFWKGNhBdwyQ=="
+    "undici@8.11.0": {
+      "integrity": "sha512-AdzuGcAkzhbha3GgCSoUBx2P0quwym6qdFNCQz/fDGZc8w9XJ741wHUbt2kTmfPz+ZIOMkySFkiY7RXmiDDC8w=="
     },
-    "unifont@0.8.3": {
-      "integrity": "sha512-+hGqF94yv3YVzQv8U5Mvbw4DoYJCiAvp/SURYEHdoM4c7LmpprWtR9Ev1BbHo/4nz7Mws6P6VHr8LjkfOHCPCg==",
+    "unifont@1.0.1": {
+      "integrity": "sha512-PeL9ZjJ7z98cjfdHNWd8G+u1+Yr0vim9dwX7UCqFuoLPNTZmvU/HumbGYAHSXYdpuQAqW2KL65F4jpHbrug1JA==",
       "dependencies": [
         "css-tree",
         "ohash",
@@ -221,7 +221,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@erickmerchant/fonts@~0.7.5",
+      "jsr:@erickmerchant/fonts@~0.7.6",
       "jsr:@flint/framework@~0.40.1",
       "jsr:@handcraft/lib@^4.7.1"
     ]

@@ -11,32 +11,6 @@ function match(cell: Cell, rule?: Rule): boolean {
   return colorMatch && numberMatch;
 }
 
-function* getBoards(
-  size: number,
-  tokens: Array<Cell>,
-  rules: Array<Rule>,
-  board: Array<Cell>,
-): Iterable<Array<Cell>> {
-  const intersection = board.filter((_, i) =>
-    Math.floor(i / size) === Math.floor(board.length / size) ||
-    i % size === board.length % size
-  );
-  const filtered = tokens.filter((t) =>
-    !intersection.some((c) => c.color === t.color || c.number === t.number) &&
-    match(t, rules[board.length])
-  );
-
-  for (const token of filtered) {
-    if (board.length === (size ** 2) - 1) yield [...board, token];
-    else {
-      yield* getBoards(size, tokens.filter((t) => t !== token), rules, [
-        ...board,
-        token,
-      ]);
-    }
-  }
-}
-
 self.onmessage = function (e: MessageEvent): void {
   const { size, colors, rules }: {
     size: number;
@@ -54,7 +28,33 @@ self.onmessage = function (e: MessageEvent): void {
     }
   }
 
-  const boards = Array.from(getBoards(size, tokens, rules, []));
+  function* getBoards(
+    board: Array<Cell>,
+  ): Iterable<Array<Cell>> {
+    const intersection = board.flatMap((c, i) =>
+      Math.floor(i / size) === Math.floor(board.length / size) ||
+        i % size === board.length % size
+        ? [c.color, c.number]
+        : []
+    );
+    const filtered = tokens.filter((t) =>
+      !board.includes(t) &&
+      !intersection.includes(t.color) && !intersection.includes(t.number) &&
+      match(t, rules[board.length])
+    );
+
+    for (const token of filtered) {
+      if (board.length === (size ** 2) - 1) yield [...board, token];
+      else {
+        yield* getBoards([
+          ...board,
+          token,
+        ]);
+      }
+    }
+  }
+
+  const boards = Array.from(getBoards([]));
   const result: { count: number; board?: Array<Cell> } = {
     count: boards.length,
   };
