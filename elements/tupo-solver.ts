@@ -48,10 +48,9 @@ export class TupoSolver extends HandcraftElement {
     let worker: Worker;
 
     effect(() => {
-      if (!this.ssr && !this.state.solved) {
+      if (!this.ssr) {
         worker?.terminate();
 
-        // const { resolve, promise } = Promise.withResolvers();
         worker = new Worker("/workers/solver.js", { type: "module" });
 
         worker.postMessage(JSON.stringify({
@@ -72,8 +71,10 @@ export class TupoSolver extends HandcraftElement {
             this.state.board = board;
 
             this.state.solved = true;
+          } else {
+            this.state.board = [];
 
-            this.state.focused = null;
+            this.state.solved = false;
           }
         };
       }
@@ -119,7 +120,7 @@ export class TupoSolver extends HandcraftElement {
                 .on(
                   "focus",
                   () => {
-                    if (!this.state.solved) this.state.focused = id;
+                    this.state.focused = id;
                   },
                 )
             ),
@@ -131,7 +132,7 @@ export class TupoSolver extends HandcraftElement {
                   const focused = this.state.focused;
                   const rules = this.state.rules;
 
-                  if (focused == null || this.state.solved) return;
+                  if (focused == null) return;
 
                   rules[focused].number = rules[focused].number === i + 1
                     ? null
@@ -150,7 +151,7 @@ export class TupoSolver extends HandcraftElement {
                   const focused = this.state.focused;
                   const rules = this.state.rules;
 
-                  if (focused == null || this.state.solved) return;
+                  if (focused == null) return;
 
                   rules[focused].color = rules[focused].color === color
                     ? null
